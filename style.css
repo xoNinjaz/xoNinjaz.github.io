@@ -92,7 +92,7 @@ nav ul li a:hover {
   font-size: 1.3rem;
   margin-bottom: 30px;
 }
-.social:hover{
+.social:active{
 transform: scale(1.2);
 }
 
@@ -210,3 +210,4 @@ footer a {
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
+
