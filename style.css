@@ -1,3 +1,12 @@
+:root {
+  --accent: #a855f7;
+  --panel: #1e1b29;
+  --panel-gradient: linear-gradient(145deg, #241f33, #1a1725);
+  --box: #2a2536;
+  --text: #ffffff;
+  --muted: #b3b3b3;
+}
+
 /* Reset */
 * {
   margin: 0;
@@ -11,7 +20,95 @@ body {
   color: #fff;
 }
 
-.auto-c{
+/* Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 8, 16, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.25s ease;
+}
+
+.popup-box {
+  position: relative;
+  background: var(--panel-gradient);
+  padding: 25px 20px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--box);
+  text-align: center;
+  max-width: 360px;
+  width: 90%;
+  color: var(--text);
+  box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+  animation: scaleIn 0.25s ease;
+}
+
+.popup-box h2 {
+  margin-bottom: 14px;
+  color: var(--accent);
+  font-size: 1.4em;
+}
+
+.popup-box p {
+  font-size: 1em;
+  line-height: 1.6em;
+  color: var(--muted);
+  margin: 10px 0;
+}
+
+.discor-d-btn {
+  display: inline-block;
+  margin-top: 16px;
+  background: #3b82f6;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95em;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.discor-d-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+/* Close X Button */
+.close-x {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 20px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.close-x:hover {
+  color: var(--accent);
+  transform: rotate(90deg);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes scaleIn {
+  from {transform: scale(0.95);}
+  to {transform: scale(1);}
+}
+
+.auto-c {
 margin: auto;
 padding: 10px;
 }
@@ -282,4 +379,5 @@ footer a {
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
+
 
