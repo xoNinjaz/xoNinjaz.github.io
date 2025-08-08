@@ -55,7 +55,7 @@ nav ul li a:hover {
 .hero {
   position: relative;
   height: 100vh;
-  background: url('images/YOUR_IMAGE_FILENAME_HERE') center/cover no-repeat;
+  background: url('images//File_Name_Here') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -282,4 +282,3 @@ footer a {
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
-
