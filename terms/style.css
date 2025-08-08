@@ -38,7 +38,7 @@ body {
 .b-uline {
 font-weight: bold;
 text-decoration: underline;
-color: var(--accent);
+color: rgb(174 35 216);
 }
 
 /* nav */
@@ -186,5 +186,6 @@ footer {
 .note-link.open .arrow {
   transform: rotate(180deg);
 }
+
 
 
