@@ -26,3 +26,23 @@ copyButton.addEventListener("click", () => {
     }, 2000);
   });
 });
+
+const storePopup = document.getElementById('storePopup');
+const openStorePopup = document.getElementById('openStorePopup');
+const closeStorePopup = document.getElementById('closeStorePopup');
+
+openStorePopup.addEventListener('click', (e) => {
+  e.preventDefault();
+  storePopup.style.display = 'flex';
+});
+
+closeStorePopup.addEventListener('click', () => {
+  storePopup.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+  if (e.target === storePopup) {
+    storePopup.style.display = 'none';
+  }
+});
+
