@@ -100,6 +100,78 @@ transform: scale(1.2);
 color: rgba(186, 183, 183, 0.773);
 font-size: small;
 }
+
+.auto-c{
+margin: auto;
+padding: 10px;
+}
+
+.discord-button {
+  display: inline-block;
+  background-color: #5865F2;
+  border-radius: 12px;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 0;               /* No padding */
+  line-height: 0;           /* Prevents vertical space */
+}
+
+.discord-button:hover {
+  background-color: #4752C4;
+}
+
+.discord-button img {
+  width: 48px;              /* Larger image */
+  height: 48px;
+  display: block;           /* Removes inline spacing */
+}
+
+/* Tooltip container */
+.toolertip {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Tooltip text */
+.toolertip .toolertip-text {
+  visibility: hidden;
+  width: max-content;
+  background-color: #7b2cbf;
+  color: #fff;
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Arrow */
+.toolertip .toolertip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #7b2cbf transparent transparent transparent;
+}
+
+/* Show on hover */
+.toolertip:hover .toolertip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
 #copyButton {
   padding: 15px 50px;
   font-size: 30px;
@@ -210,3 +282,4 @@ footer a {
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
+
