@@ -1,0 +1,579 @@
+:root {
+  --bg: #0b0810;
+  --panel: rgba(255,255,255,0.02);
+  --purple-600: #6f33d6;
+  --purple-400: #b88cff;
+  --accent: #8d56ff;
+  --text: #efeefe;
+  --muted: #cfc5ff;
+  --purple-light: #b88cff;
+  --purple: #8d56ff;
+  --purple-dark: #5a2ea6;
+  --bg-dark: #0d0d0d;
+  --text-light: #ffffff;
+  --text-muted: #cccccc;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Bubble background */
+.bubbles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  background: radial-gradient(circle, var(--purple-400), var(--purple-600));
+  border-radius: 50%;
+  opacity: 0.28;
+  animation: rise linear infinite;
+}
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.28; }
+  100% { transform: translateY(-120vh) scale(0.8); opacity: 0; }
+}
+
+/* Layout basics */
+.nav, .content, footer {
+  position: relative;
+  z-index: 2;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--purple-600), var(--purple-400));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold; color: #fff;
+}
+
+.menu a {
+  margin-left: 15px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+}
+.menu a:hover { color: var(--text); }
+
+.content {
+  flex: 1;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.why-vote h2 {
+  margin-bottom: 14px;
+  color: var(--accent);
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Tooltip styling for "Why Vote?" */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  width: 220px;
+  background-color: var(--panel);
+  color: var(--text);
+  text-align: center;
+  padding: 6px;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s;
+  font-size: 12px;
+  border: 1px solid var(--accent);
+}
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Image before Why Vote? */
+.why-icon {
+  height: 1em;
+  width: auto;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+/* Discord tooltip + glow above logo */
+.hover-image-container {
+  margin-top: 60px;
+  position: relative;
+  display: inline-block;
+}
+
+.purple-tooltip {
+  background-color: var(--purple-600);
+  color: white;
+  font-size: 13px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 10px rgba(141,86,255,0.8), 0 0 20px rgba(141,86,255,0.6); }
+  50% { box-shadow: 0 0 15px rgba(184,140,255,0.9), 0 0 25px rgba(141,86,255,0.7); }
+  100% { box-shadow: 0 0 10px rgba(141,86,255,0.8), 0 0 20px rgba(141,86,255,0.6); }
+}
+
+.hover-image-container:hover .purple-tooltip {
+  opacity: 1;
+  visibility: visible;
+  animation: glowPulse 1.5s infinite;
+}
+
+/* Vote section */
+.why-vote ul {
+  list-style: none;
+  padding: 0;
+}
+.why-vote li {
+  margin: 8px 0;
+  color: var(--muted);
+}
+
+.vote-box {
+  background: linear-gradient(135deg, rgba(111,51,214,0.15), rgba(184,140,255,0.1));
+  border: 1px solid rgba(184,140,255,0.25);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+  box-shadow: 0 0 15px rgba(141,86,255,0.3);
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vote-box h3 {
+  color: var(--accent);
+  margin-bottom: 15px;
+}
+
+.vote-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.vote-list li.centered {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 48%;
+}
+
+.vote-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, var(--purple-600), var(--purple-400));
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vote-link img {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.3s ease;
+}
+
+.vote-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(141,86,255,0.4);
+}
+
+.vote-link:hover img {
+  transform: translateX(3px) rotate(8deg);
+}
+
+/* Discord logo (smaller by 7px) */
+.hover-image {
+  width: 153px;
+  height: 153px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.hover-image:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+    /*################ */
+/*   Nav And Footer        */
+    /*################ */
+
+    .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: rgba(20, 20, 20, 0.4);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-left a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-left a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple), var(--purple-light), var(--purple));
+  background-size: 200% 200%;
+  transition: width 0.3s ease;
+}
+
+.nav-left a:hover::after { width: 100%; }
+
+.nav-left a:nth-child(3)::after { width: 100%; }
+
+.nav-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-logo img {
+  height: 60px;
+  display: block;
+}
+
+.discord-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5865F2;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  width: 50px;
+  height: 38px;
+  margin-right: 4px;
+  padding: 0.5px 1px 0.5px 1px
+}
+
+.discord-button:hover { background-color: #4752C4; }
+.discord-button img { width: 32px; height: 32px; display: block; }
+
+.btn-ip {
+  padding: 8px 36px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--purple), var(--purple-light));
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.btn-ip:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px var(--purple-light);
+}
+
+#slideBox {
+  position: fixed;
+  bottom: 20px;
+  right: -400px; 
+  background-color: #4ED6C5;
+  color: #000;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+  z-index: 999;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+#slideBox.show {
+  right: 20px;         
+  opacity: 1;          
+  transform: translateY(0); 
+}
+
+.toolertip {
+  position: relative;
+}
+
+.toolertip-text {
+  position: absolute;
+  top: 125%; /* places tooltip under the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--purple-light);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 9999;
+}
+
+/* Tooltip arrow below button */
+.toolertip-text::after {
+  content: "";
+  position: absolute;
+  bottom: 100%; /* arrow on top of tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent var(--purple-light) transparent;
+}
+
+/* Show on hover */
+.toolertip:hover .toolertip-text {
+  opacity: 1;
+  transform: translateX(-50%) translateY(5px); /* slight move down */
+}
+
+/* Popup style */
+/* Overlay */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup box */
+.popup-content {
+  background: linear-gradient(135deg, #b88cff, #4ED6C5);
+  color: #fff;
+  padding: 25px 28px;
+  border-radius: 16px;
+  width: 320px;
+  text-align: center;
+  position: relative;
+  transform: translateY(-20px);
+  animation: slideDown 0.3s ease forwards;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Title & text */
+.popup-content h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #fff;
+}
+.popup-content p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/* Discord button inside popup */
+.discor-dbtn {
+  display: inline-block;
+  margin-top: 15px;
+  background: #5865F2;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: background 0.2s, transform 0.15s;
+}
+.discor-dbtn:hover {
+  background: #4752C4;
+  transform: scale(1.05);
+}
+
+/* Close button */
+.popup-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.8);
+  transition: color 0.2s;
+}
+.popup-close:hover {
+  color: #fff;
+}
+
+/* Popup animation */
+@keyframes slideDown {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Footer */
+
+.site-footer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 15px 40px;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(10px);
+  font-size: 14px;
+  color: #ffffff;
+  gap: 10px;
+}
+
+.footer-center { text-align: center; }
+.footer-center a { text-decoration: underline; }
+
+.footer-left {
+  position: relative;
+  justify-self: start;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.email-tooltip {
+  position: absolute;
+  top: -28px;
+  left: 0;
+  background: #b88cff;
+  color: white;
+  padding: 3px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateY(5px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.footer-left:hover .email-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer-left span#emailText {
+  color: #b88cff;
+  background: linear-gradient(90deg, rgba(0,0,0,0.6), rgba(138,43,226,0.6));
+  padding: 3px 6px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.footer-left span#emailText:hover {
+  transform: scale(1.05);
+  color: #b88cff;
+}
+
+.footer-right { justify-self: end; }
+.footer-right a { display: inline-block; margin-left: 10px; }
+
+.footer-right img {
+  width: 28px;
+  height: 28px;
+  filter: grayscale(100%) brightness(0.6) saturate(0.5);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.footer-right a:hover img {
+  filter: none;
+  transform: scale(1.15);
+}
+
+#gra-y {
+color: rgba(186, 183, 183, 0.773);;
+}
+
+#colr {
+color: #6c2bd9;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Animations */
+.fade-in { animation: fadeIn 0.6s ease-in forwards; }
+.fade-up { animation: fadeUp 0.6s ease-in forwards; }
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+@keyframes fadeUp { from {opacity: 0; transform: translateY(15px);} to {opacity: 1; transform: translateY(0);} }
