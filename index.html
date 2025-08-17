@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoloMC — Home</title>
+  <link rel="icon" type="image/png" href="SM-favicon.png">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav">
+    <nav class="nav-left">
+      <a href="https://xoninjaz.github.io/#home">Home</a>
+      <a href="https://xoninjaz.github.io/rules">Rules</a>
+      <a href="https://xoninjaz.github.io/vote">Vote</a>
+      <a class="store-link" href="#">Store</a>
+    </nav>
+
+    <div class="nav-logo">
+      <img src="images/SM3d.png" alt="SoloMC Logo">
+    </div>
+
+    <div class="nav-right">
+      <a href="https://discord.gg/yourserver" target="_blank" class="discord-button toolertip">
+      <img src="images/discord-logo-white.png" alt="Discord">
+      <span class="toolertip-text">Click To Join</span>
+      </a>
+      <button id="copyButton" class="btn-ip" onclick="copyIP()">PLAY.SOLOMC.FUN</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="images/SoloMC-Mascot-BGClear.png" alt="SoloMC Mascot" class="mascot-logo">
+    <h1>Welcome to SoloMC</h1>
+    <p>Your epic Minecraft adventure awaits. Join the fight, explore worlds, and meet friends.</p>
+    <a href="#" class="cta-btn">Join The Adventure</a>
+  </section>
+
+  <!-- About Section -->
+  <section class="about fade-in">
+    <h2>About SoloMC</h2>
+    <p>
+      SoloMC is a custom Minecraft server offering exciting gameplay modes,
+      a friendly community, and rewarding events. Whether you like PvP, survival,
+      or creative builds, we have something for you.
+    </p>
+  </section>
+
+   <!-- === GAMEMODES Section === -->
+  <section class="gamemodes fade-in" id="gamemodesSection">
+    <h2>Gamemodes</h2>
+
+    <!-- Track (infinite) -->
+    <div class="gamemodes-track" aria-hidden="false">
+      <!-- First set -->
+      <div class="gamemode-card lifesteal" data-title="Lifesteal" data-image="images/lifesteal-icon.png">
+        <img class="card-icon" src="images/lifesteal-icon.png" alt="Lifesteal icon">
+        <div class="card-label">Lifesteal</div>
+        <span class="tooltip">Click To Know More</span>
+      </div>
+
+      <div class="gamemode-card practice" data-title="Practice PvP" data-image="images/practice-icon.png">
+        <img class="card-icon" src="images/practice-icon.png" alt="Practice PvP icon">
+        <div class="card-label">Practice PvP</div>
+        <span class="tooltip">Click To Know More</span>
+      </div>
+
+      <div class="gamemode-card skybattle" data-title="SkyBattle" data-image="images/skybattle-icon.png">
+        <img class="card-icon" src="images/skybattle-icon.png" alt="SkyBattle icon">
+        <div class="card-label">SkyBattle</div>
+        <span class="tooltip">Click To Know More</span>
+      </div>
+
+      <div class="gamemode-card comingsoon" data-title="Coming Soon" data-image="images/comingsoon-icon.png">
+        <img class="card-icon" src="images/comingsoon-icon.png" alt="Coming Soon icon">
+        <div class="card-label">Coming Soon</div>
+        <span class="tooltip">Click To Know More</span>
+      </div>
+
+      <div class="gamemode-card comingsoon" data-title="Coming Soon" data-image="images/comingsoon-icon.png">
+        <img class="card-icon" src="images/comingsoon-icon.png" alt="Coming Soon icon">
+        <div class="card-label">Coming Soon</div>
+        <span class="tooltip">Click To Know More</span>
+      </div>
+
+      <!-- Duplicate set for seamless infinite scroll -->
+      <div class="gamemode-card lifesteal" data-title="Lifesteal" data-image="images/lifesteal-icon.png">
+        <img class="card-icon" src="images/lifesteal-icon.png" alt="Lifesteal icon">
+        <div class="card-label">Lifesteal</div>
+        <span class="tooltip">Click To Know More</span>
+      </div>
+
+      <div class="gamemode-card practice" data-title="Practice PvP" data-image="images/practice-icon.png">
+        <img class="card-icon" src="images/practice-icon.png" alt="Practice PvP icon">
+        <div class="card-label">Practice PvP</div>
+        <span class="tooltip">Click To Know More</span>
+      </div>
+
+      <div class="gamemode-card skybattle" data-title="SkyBattle" data-image="images/skybattle-icon.png">
+        <img class="card-icon" src="images/skybattle-icon.png" alt="SkyBattle icon">
+        <div class="card-label">SkyBattle</div>
+        <span class="tooltip">Click To Know More</span>
+      </div>
+
+      <div class="gamemode-card comingsoon" data-title="Coming Soon" data-image="images/comingsoon-icon.png">
+        <img class="card-icon" src="images/comingsoon-icon.png" alt="Coming Soon icon">
+        <div class="card-label">Coming Soon</div>
+        <span class="tooltip">Click To Know More</span>
+      </div>
+
+      <div class="gamemode-card comingsoon" data-title="Coming Soon" data-image="images/comingsoon-icon.png">
+        <img class="card-icon" src="images/comingsoon-icon.png" alt="Coming Soon icon">
+        <div class="card-label">Coming Soon</div>
+        <span class="tooltip">Click To Know More</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Details panel (click to expand description) -->
+  <section class="gamemode-details" id="gamemodeDetails" aria-hidden="true">
+    <div class="details-inner">
+      <img id="detailsIcon" class="details-icon" src="" alt="" aria-hidden="true">
+      <div class="details-text">
+        <button class="close-details" id="closeDetails" aria-label="Close details">&times;</button>
+        <h3 id="detailsTitle">Title</h3>
+        <p id="detailsDescription">Description goes here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+   <footer class="site-footer">
+<div class="footer-left">
+  <span id="emailText">support@solomc.fun</span>
+  <div id="emailTooltip" class="email-tooltip">Click To Copy</div>
+</div>
+
+  <div class="footer-center">
+    © 2025 SoloMC | <a id="colr" href="https://xoninjaz.github.io/privacy">Privacy Policy</a> ✱ <a id="colr" href="https://xoninjaz.github.io/terms">Terms and Conditions</a>
+    <br>
+    <small id="gra-y">Not affiliated with Mojang or Microsoft</small>
+  </div>
+
+  <div class="footer-right">
+    <a href="https://youtube.com/" target="_blank">
+      <img src="images/youtube-logo-purple.png" alt="YouTube">
+    </a>
+    <a href="https://instagram.com/" target="_blank">
+      <img src="images/insta-logo-purple.png" alt="Instagram">
+    </a>
+    <a href="https://discord.gg/" target="_blank">
+      <img src="images/discord-logo-purple.png" alt="Discord">
+    </a>
+  </div>
+</footer>
+
+<!-- Store Unavailable Popup -->
+<div id="storeUnavailablePopup" class="popup-overlay">
+  <div class="popup-content">
+    <button class="popup-close">&times;</button>
+    <h2>The Store Is Currently Unavailable.</h2>
+    <p>Please Use The Discord To Purchase.</p>
+    <p>Ranks, Coins And Other Perks.</p>
+    <a href="https://discord.gg/" target="_blank" class="discor-dbtn">Join Discord</a>
+  </div>
+</div>
+  <div id="slideBox"></div>
+  <script src="script.js"></script>
+</body>
+</html>
