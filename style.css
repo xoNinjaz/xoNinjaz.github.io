@@ -682,6 +682,11 @@ color: rgba(186, 183, 183, 0.773);;
 color: #6c2bd9;
 }
 
+#pa-ading {
+padding: 7px;
+line-height: 1.6;
+}
+
 /* ====== Animations ====== */
 @keyframes glowPulse {
   0% { filter: drop-shadow(0 0 6px var(--purple)); }
@@ -711,3 +716,4 @@ color: #6c2bd9;
   opacity: 1;
   transform: translateY(0);
 }
+
